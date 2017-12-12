@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<script type="text/javascript" src="Script/jquery-3.2.1.min.js"></script>
+	<meta charset="UTF-8">
+	<title>Lesson Shl2</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var Shlemazl = function(x,y) {
+  this.x = x;
+  this.y = y;
+ this.draw();
+ this.direct;
+};
+/*var Shmulik = new Shlemazl(10,20);*/
+
+/*var drawShlemazl = function(shlemazl){
+  var shlemazlHTML = "<img src='img/shlemazl.png'/>";
+  var shlemazlElement = $(shlemazlHTML);*/
+
+  Shlemazl.prototype.draw = function(){
+    var shlemazlHTML = "<img src='Image/shlemazl.png'/>"
+
+    this.shlemazlElement = $(shlemazlHTML);
+
+  this.shlemazlElement.css({
+    position: "absolute",
+    left: this.x,
+    top: this.y
+  });
+
+  $("body").append(this.shlemazlElement);
+};
+
+
+
+  Shlemazl.prototype.moveRight = function() {
+    this.x +=5;
+
+    this.shlemazlElement.css({
+      left: this.x,
+      top: this.y
+    })
+  };
+Shlemazl.prototype.moveLeft = function() {
+    this.x -=5;
+
+    this.shlemazlElement.css({
+      left: this.x,
+      top: this.y
+    })
+  };
+Shlemazl.prototype.moveUp = function() {
+    this.y -=5;
+
+    this.shlemazlElement.css({
+      left: this.x,
+      top: this.y
+    })
+  };
+  Shlemazl.prototype.moveDown = function() {
+    this.y +=5;
+
+    this.shlemazlElement.css({
+      left: this.x,
+      top: this.y
+    })
+  };
+/*var Shmulik = new Shlemazl(10, 20);
+var Izik = new Shlemazl(100, 200);*/
+
+var Shmulik = new Shlemazl(10, 20);
+var Izik = new Shlemazl(100, 150);
+
+/*drawShlemazl(Shmulik);
+drawShlemazl(Izik);*/
+var KeyNames = {
+      32: "space",
+      37: "left",
+      38: "up",
+      39: "right",
+      40: "down"
+    };
+    $("body").keydown(function(event) {
+/*      console.log(KeyNames[event.keyCode]);*/
+   var keyCode = event.keyCode;
+  if (keyCode == 37 ){ 
+    Izik.moveLeft();
+  };
+  if (keyCode == 39 ){ 
+    Izik.moveRight();
+  };
+  if (keyCode == 38 ){ 
+    Izik.moveUp();
+  };
+  if (keyCode == 40 ){ 
+    Izik.moveDown();
+  };
+ //Shmulik's movement
+if (keyCode == 65 ){ 
+    Shmulik.moveLeft();
+  };
+  if (keyCode == 68 ){ 
+    Shmulik.moveRight();
+  };
+  if (keyCode == 87 ){ 
+    Shmulik.moveUp();
+  };
+  if (keyCode == 83 ){ 
+    Shmulik.moveDown();
+  };
+
+/*  Shlemazl.prototype.direct = KeyNames[event.keyCode];*/
+  });
+/*if (this.direct == "left") {
+Izik.moveLeft();
+};
+if (this.direct == "right") {
+  Izik.moveRight();
+};
+if (this.direct == "up") {
+  Izik.moveUp();
+};
+if (this.direct == "down") {
+Izik.moveDown();
+} */
+	</script>
+</body>
+</html>
